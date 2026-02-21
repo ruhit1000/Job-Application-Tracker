@@ -33,15 +33,15 @@
         <div class="grid grid-cols-3 gap-4 pb-7">
             <div class="p-5 bg-white border border-base-300 rounded-lg">
                 <p class="mb-2">Total</p>
-                <p class="font-bold text-2xl text-[#002c5c]">0</p>
+                <p id="total-job-count" class="font-bold text-2xl text-[#002c5c]">0</p>
             </div>
             <div class="p-5 bg-white border border-base-300 rounded-lg">
                 <p class="mb-2">Interview</p>
-                <p class="font-bold text-2xl text-[#10b981]">0</p>
+                <p id="interview-job-count" class="font-bold text-2xl text-[#10b981]">0</p>
             </div>
             <div class="p-5 bg-white border border-base-300 rounded-lg">
                 <p class="mb-2">Rejected</p>
-                <p class="font-bold text-2xl text-[#ef4444]">0</p>
+                <p id="rejected-job-count" class="font-bold text-2xl text-[#ef4444]">0</p>
             </div>
         </div>
         <hr class="border-base-300">
@@ -52,9 +52,9 @@
             <div>
                 <h2 class="text-[#002c5c] font-semibold text-xl mb-6">Available Jobs</h2>
                 <div class="flex gap-2">
-                    <button class="btn btn-outline btn-info btn-active w-24">All</button>
-                    <button class="btn btn-outline btn-info w-24">Interview</button>
-                    <button class="btn btn-outline btn-info w-24">Rejected</button>
+                    <button class="filter-btn btn btn-outline btn-info btn-active w-24">All</button>
+                    <button class="filter-btn btn btn-outline btn-info w-24">Interview</button>
+                    <button class="filter-btn btn btn-outline btn-info w-24">Rejected</button>
                 </div>
             </div>
             <div>
@@ -95,6 +95,10 @@
             </div>
         </section>
     </main>
+
+    <script src="./job-data.js"></script>
+    <script src="./machine.js"></script>
+    <script src="./script.js"></script>
 </body>
 
 </html>
