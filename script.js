@@ -10,13 +10,11 @@ const filterJobCounter = document.getElementById('filter-jobs-counter');
 const filterJobText = document.getElementById('filter-job-text');
 const noInterviewCard = document.getElementById('no-interview-card');
 const noRejectedCard = document.getElementById('no-rejected-card');
+const mainContainer = document.getElementById('main-container');
 
 
 // all counter update
-totalJobCount.innerText = allJobPosts.length;
-interviewJobCount.innerText = allInterviewPosts.length;
-rejectedJobCount.innerText = allRejectedPosts.length;
-
+countTotal();
 
 // filter button functionality
 for (const filterBtn of filterButtons) {
@@ -48,7 +46,7 @@ for (const jobPost of allJobPosts) {
     jobPostCard.innerHTML = `
     <div>
         <h2 class="text-[#002c5c] font-semibold text-lg">${jobPost.company_name}</h2>
-        <p class="text-gray-500">${jobPost.position}</p>
+        <p class="job-position text-gray-500">${jobPost.position}</p>
         <p class="my-5 text-gray-500">${jobPost.work_location} | ${jobPost.job_type} | ${jobPost.salary_range}</p>
         <div class="badge badge-neutral badge-outline p-3 mb-2">NOT APPLIED</div>
         <P class="text-[#323B49] mb-5">${jobPost.discipline}</P>
@@ -60,4 +58,16 @@ for (const jobPost of allJobPosts) {
     </button>
     `
     allJobsContainer.append(jobPostCard);
-}
+};
+
+
+// Interview and Rejected button functionality
+mainContainer.addEventListener('click', (event)=>{
+    const buttonElement = event.target;
+    const buttonName = buttonElement.innerText;
+    if (buttonName === 'INTERVIEW'){
+        addJobCardToInterview(buttonElement);
+        updateCardStatus(buttonElement);
+        countTotal();
+    }
+})

@@ -1,4 +1,4 @@
-const allJobPosts = [
+let allJobPosts = [
   {
     "company_name": "Pixel Perfect",
     "position": "UX/UI Designer",
@@ -65,6 +65,6 @@ const allJobPosts = [
   }
 ];
 
-const allInterviewPosts = [];
+let allInterviewPosts = [];
 
-const allRejectedPosts = [];
+let allRejectedPosts = [];
