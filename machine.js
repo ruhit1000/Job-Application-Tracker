@@ -12,15 +12,20 @@ function changeSection(buttonName) {
         allInterviewContainer.classList.add('hidden');
         allRejectedContainer.classList.add('hidden');
         allJobsContainer.classList.remove('hidden');
+        filterJobText.classList.add('hidden');
     } 
     if (buttonName === 'Interview'){
         allJobsContainer.classList.add('hidden');
         allRejectedContainer.classList.add('hidden');
         allInterviewContainer.classList.remove('hidden');
+        filterJobText.classList.remove('hidden');
+        filterJobCounter.innerText = allInterviewPosts.length;
     }
     if (buttonName === 'Rejected') {
         allJobsContainer.classList.add('hidden');
         allInterviewContainer.classList.add('hidden');
         allRejectedContainer.classList.remove('hidden');
+        filterJobText.classList.remove('hidden');
+        filterJobCounter.innerText = allRejectedPosts.length;
     }
 }
