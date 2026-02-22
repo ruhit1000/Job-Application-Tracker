@@ -53,7 +53,7 @@ function addJobCardToInterview(buttonElement) {
     if (!allInterviewPosts.includes(matchedJobPost)) {
         allInterviewPosts.push(matchedJobPost);
     }
-    allRejectedPosts = allRejectedPosts.filter((object)=>{
+    allRejectedPosts = allRejectedPosts.filter((object) => {
         return !(object.company_name === matchedJobPost.company_name && object.position === matchedJobPost.position);
     })
 };
@@ -64,7 +64,7 @@ function addJobCardToRejected(buttonElement) {
     if (!allRejectedPosts.includes(matchedJobPost)) {
         allRejectedPosts.push(matchedJobPost);
     }
-    allInterviewPosts = allInterviewPosts.filter((object)=>{
+    allInterviewPosts = allInterviewPosts.filter((object) => {
         return !(object.company_name === matchedJobPost.company_name && object.position === matchedJobPost.position);
     })
 };
@@ -100,6 +100,16 @@ function updateCardStatus(buttonElement) {
 function renderJobCards(jobCardsArray, jobCardsContainer) {
     jobCardsContainer.innerHTML = '';
     for (const jobPost of jobCardsArray) {
+        let badgeClass = 'badge badge-neutral badge-outline p-3 mb-2';
+        let badgeName = 'NOT APPLIED';
+        if (allInterviewPosts.includes(jobPost)) {
+            badgeClass = 'badge badge-success p-3 mb-2';
+            badgeName = 'INTERVIEW'
+        }
+        if (allRejectedPosts.includes(jobPost)) {
+            badgeClass = 'badge badge-error p-3 mb-2';
+            badgeName = 'REJECTED'
+        }
         const jobPostCard = document.createElement('div');
         jobPostCard.classList = 'job-card flex justify-between bg-white p-6 rounded-lg border border-base-300';
         jobPostCard.innerHTML = `
@@ -107,7 +117,7 @@ function renderJobCards(jobCardsArray, jobCardsContainer) {
         <h2 class="text-[#002c5c] font-semibold text-lg">${jobPost.company_name}</h2>
         <p class="job-position text-gray-500">${jobPost.position}</p>
         <p class="my-5 text-gray-500">${jobPost.work_location} | ${jobPost.job_type} | ${jobPost.salary_range}</p>
-        <div class="badge badge-neutral badge-outline p-3 mb-2">NOT APPLIED</div>
+        <div class="${badgeClass}">${badgeName}</div>
         <P class="text-[#323B49] mb-5">${jobPost.discipline}</P>
         <button class="btn btn-outline btn-success">INTERVIEW</button>
         <button class="btn btn-outline btn-error ml-2">REJECTED</button>
