@@ -13,7 +13,6 @@ const noRejectedCard = document.getElementById('no-rejected-card');
 const mainContainer = document.getElementById('main-container');
 const interviewCardsContainer = document.getElementById('interview-cards-container');
 const rejectedCardsContainer = document.getElementById('rejected-cards-container');
-// const deleteButton = document.getElementsByClassName('delete-btn');
 
 
 // all counter update
@@ -49,8 +48,9 @@ mainContainer.addEventListener('click', (event) => {
         renderJobCards(allRejectedPosts, rejectedCardsContainer)
         countTotal();
     };
-    if (buttonElement.classList.contains('delete-btn')) {
-        const matchedJobPost = getJobDetailsObject(buttonElement);
+    const deleteBtn = event.target.closest('.delete-btn');
+    if (deleteBtn) {
+        const matchedJobPost = getJobDetailsObject(deleteBtn);
         allJobPosts = allJobPosts.filter((object) => {
             return !(object.company_name === matchedJobPost.company_name && object.position === matchedJobPost.position);
         });
