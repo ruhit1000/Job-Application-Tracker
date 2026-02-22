@@ -11,6 +11,8 @@ const filterJobText = document.getElementById('filter-job-text');
 const noInterviewCard = document.getElementById('no-interview-card');
 const noRejectedCard = document.getElementById('no-rejected-card');
 const mainContainer = document.getElementById('main-container');
+const interviewCardsContainer = document.getElementById('interview-cards-container');
+const rejectedCardsContainer = document.getElementById('rejected-cards-container');
 
 
 // all counter update
@@ -35,14 +37,15 @@ mainContainer.addEventListener('click', (event)=>{
     if (buttonName === 'INTERVIEW'){
         addJobCardToInterview(buttonElement);
         updateCardStatus(buttonElement);
+        renderJobCards(allInterviewPosts, interviewCardsContainer)
+        renderJobCards(allRejectedPosts, rejectedCardsContainer)
         countTotal();
     }
     if (buttonName === 'REJECTED') {
         addJobCardToRejected(buttonElement);
         updateCardStatus(buttonElement);
+        renderJobCards(allInterviewPosts, interviewCardsContainer)
+        renderJobCards(allRejectedPosts, rejectedCardsContainer)
         countTotal();
     };
 })
-
-// renderJobCards(allInterviewPosts, allInterviewContainer);
-// renderJobCards(allRejectedPosts, allRejectedContainer);

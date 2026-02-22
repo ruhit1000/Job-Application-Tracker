@@ -98,6 +98,7 @@ function updateCardStatus(buttonElement) {
 
 // render job post cards
 function renderJobCards(jobCardsArray, jobCardsContainer) {
+    jobCardsContainer.innerHTML = '';
     for (const jobPost of jobCardsArray) {
         const jobPostCard = document.createElement('div');
         jobPostCard.classList = 'job-card flex justify-between bg-white p-6 rounded-lg border border-base-300';
