@@ -122,7 +122,7 @@ function renderJobCards(jobCardsArray, jobCardsContainer) {
         <button class="btn btn-outline btn-success">INTERVIEW</button>
         <button class="btn btn-outline btn-error ml-2">REJECTED</button>
     </div>
-    <button class="btn rounded-full">
+    <button class="delete-btn btn rounded-full">
         <i class="fa-regular fa-trash-can"></i>
     </button>
     `

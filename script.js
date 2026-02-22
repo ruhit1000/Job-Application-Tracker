@@ -13,6 +13,7 @@ const noRejectedCard = document.getElementById('no-rejected-card');
 const mainContainer = document.getElementById('main-container');
 const interviewCardsContainer = document.getElementById('interview-cards-container');
 const rejectedCardsContainer = document.getElementById('rejected-cards-container');
+// const deleteButton = document.getElementsByClassName('delete-btn');
 
 
 // all counter update
@@ -31,10 +32,10 @@ for (const filterBtn of filterButtons) {
 renderJobCards(allJobPosts, allJobsContainer);
 
 // Interview and Rejected button functionality
-mainContainer.addEventListener('click', (event)=>{
+mainContainer.addEventListener('click', (event) => {
     const buttonElement = event.target;
     const buttonName = buttonElement.innerText;
-    if (buttonName === 'INTERVIEW'){
+    if (buttonName === 'INTERVIEW') {
         addJobCardToInterview(buttonElement);
         updateCardStatus(buttonElement);
         renderJobCards(allInterviewPosts, interviewCardsContainer)
@@ -48,4 +49,20 @@ mainContainer.addEventListener('click', (event)=>{
         renderJobCards(allRejectedPosts, rejectedCardsContainer)
         countTotal();
     };
+    if (buttonElement.classList.contains('delete-btn')) {
+        const matchedJobPost = getJobDetailsObject(buttonElement);
+        allJobPosts = allJobPosts.filter((object) => {
+            return !(object.company_name === matchedJobPost.company_name && object.position === matchedJobPost.position);
+        });
+        allInterviewPosts = allInterviewPosts.filter((object) => {
+            return !(object.company_name === matchedJobPost.company_name && object.position === matchedJobPost.position);
+        });
+        allRejectedPosts = allRejectedPosts.filter((object) => {
+            return !(object.company_name === matchedJobPost.company_name && object.position === matchedJobPost.position);
+        });
+        renderJobCards(allJobPosts, allJobsContainer);
+        renderJobCards(allInterviewPosts, interviewCardsContainer)
+        renderJobCards(allRejectedPosts, rejectedCardsContainer)
+        countTotal();
+    }
 })
